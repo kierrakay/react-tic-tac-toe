@@ -3,9 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            value = null
+        }
+    }
     render() {
       return (
-        <button className="square" onClick={function() {
+          //passing an anonymous function on the onClick prop. it's binds this. React will only
+          //call this function after a click
+        <button className="square" onClick={ () => {
             alert('click')
         }}>
           {this.props.value}
@@ -69,3 +78,6 @@ class Square extends React.Component {
   );
  
   
+
+//   we want the Square component to “remember” that it
+//    got clicked, and fill it with an “X” mark. To “remember” things, components use state.
