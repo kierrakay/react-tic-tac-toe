@@ -7,23 +7,31 @@ class Square extends React.Component {
         super(props)
 
         this.state = {
-            value = null
+            value: null,
         }
     }
     render() {
       return (
           //passing an anonymous function on the onClick prop. it's binds this. React will only
           //call this function after a click
-        <button className="square" onClick={ () => {
-            alert('click')
-        }}>
-          {this.props.value}
+        <button 
+            className="square" 
+            onClick={ () => this.setState({value: 'X'})}
+        >
+            {this.state.value}
         </button>
       );
     }
   }
   
   class Board extends React.Component {
+      constructor(props){
+          super(props)
+
+          this.state = {
+              squares: Array(9).fill(null)
+          }
+      }
     renderSquare(i) {
       return <Square value={i}/>;
     }
