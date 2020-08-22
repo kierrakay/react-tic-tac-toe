@@ -2,21 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
+function Square(props) {
   
-    render() {
       return (
           //passing an anonymous function on the onClick prop. it's binds this. React will only
           //call this function after a click
         <button 
             className="square" 
-            onClick={() => this.props.onClick()}
-        >
-            {this.props.value}
+            onClick={() => props.onClick()}>
+                {props.value}
         </button>
       );
     }
-  }
   
 class Board extends React.Component {
     constructor(props){
