@@ -3,22 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            value: null,
-        }
-    }
+  
     render() {
       return (
           //passing an anonymous function on the onClick prop. it's binds this. React will only
           //call this function after a click
         <button 
             className="square" 
-            onClick={ () => this.setState({value: 'X'})}
+            onClick={() => this.props.OnClick()}
         >
-            {this.state.value}
+            {this.props.value}
         </button>
       );
     }
@@ -33,7 +27,16 @@ class Square extends React.Component {
           }
       }
     renderSquare(i) {
-      return <Square value={this.state.squares[i]} />;
+      return (
+      <Square 
+      value={this.state.squares[i]} 
+      onClick={() => this.handleClick(i)}
+      />
+      )
+    //each square will now recieve a value of prop that will either be "X", "O", or null
+    //onClick is a function we will pass to square to update the Board. We cant access BOARDS state in square
+    //so we do this to allow SQUARE to call that function when a square is clicked
+    //we are now passing down 2 props (value and onClick) to SQUARE.
     }
   
     render() {
