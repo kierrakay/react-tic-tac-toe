@@ -9,7 +9,7 @@ function Square(props) {
           //call this function after a click
         <button 
             className="square" 
-            onClick={() => props.onClick()}>
+            onClick={props.onClick}>
                 {props.value}
         </button>
       );
